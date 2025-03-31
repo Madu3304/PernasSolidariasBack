@@ -1,4 +1,4 @@
-WebCadastramento
+#WebCadastramento
 Software de cadastramento de Corredores.
 
 Sistema para cadastramento de corredores, cadeirantes e gerenciamento de duplas, conforme requisitos levantados em reunião realizada no dia 22/02/2025 com o cliente. Sistema será desenvolvido para a Ong Pernas Solidárias, tem como objetivo principal realizar inscrição de corredores e cadeirantes em corrida, possibilitando que todos possam correr. Objetivo do software é otimizar o processo de inscrição de corredores, cadeirantes para atividades esportivas, funcionando como uma agenda otimizada.
