@@ -8,7 +8,7 @@ const Evento = sequelize.define('Evento', {
         PrimaryKey: true
     },
 
-    nome:{
+    nomeEvento:{
         type:Sequelize.STRING,
         allowNull: false
 

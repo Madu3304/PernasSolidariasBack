@@ -8,7 +8,7 @@ const Cadeirante = sequelize.define('Cadeirante', {
         PrimaryKey: true
     },
 
-    nome:{
+    nomeCadeirante:{
         type:Sequelize.STRING,
         allowNull: false
 

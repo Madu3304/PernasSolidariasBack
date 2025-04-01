@@ -8,7 +8,7 @@ const Corredor = sequelize.define('Corredor', {
         PrimaryKey: true
     },
 
-    nome:{
+    nomeCorredor:{
         type:Sequelize.STRING,
         allowNull: false
 

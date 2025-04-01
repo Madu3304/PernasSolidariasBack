@@ -15,8 +15,8 @@ import { Cadeirante } from "./Models/CadeiranteModel.js";
 
 
 import { router } from "./Routes/CadeiranteRoutes.js";
-// import { router } from "./Routes/CadeiranteRoute.js";
-// import { router } from "./Routes/CadeiranteRoute.js";
+
+
 
 const app = express()
 
