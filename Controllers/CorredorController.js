@@ -1,3 +1,4 @@
+import { Where } from "sequelize/lib/utils"
 import { Corredor } from "../Models/CorredorModel.js"
 
 const corredor = {}
@@ -33,7 +34,27 @@ corredor.createCorredor = async(req, res) => {
     }
 }
 
+corredor.updateCorredor = async(req, res) => {
+    try {
+            const {  id_cadeirante } = req.params
+            const { nomeCorredor, cpf, DataNascimento, email, TamanhoBlusa, Distancia } = req.body
+            await Corredor.update({
+                nomeCorredor: nomeCorredor, 
+                cpf: cpf, 
+                DataNascimento: DataNascimento, 
+                email: email, 
+                TamanhoBlusa: TamanhoBlusa, 
+                Distancia: Distancia
+            },
+            {Where: { id_corredor: id_corredor }})
 
+             const corredor_atualizado = await Corredor.findByPk(id_corredor)
+             res.send(corredor_atualizado)
+
+        } catch (error) {
+            console.log(error)   
+    }
+}
 
 
 export { Corredor }

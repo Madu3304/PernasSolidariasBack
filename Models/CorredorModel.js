@@ -2,7 +2,7 @@ import { Sequelize } from "sequelize";
 import sequelize from "../Config/banco.js";
 
 const Corredor = sequelize.define('Corredor', {
-    id_cadeirante:{
+    id_corredor:{
         type:Sequelize.INTEGER,
         autoincrement: true,
         PrimaryKey: true
