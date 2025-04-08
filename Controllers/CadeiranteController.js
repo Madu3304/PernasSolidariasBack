@@ -2,6 +2,29 @@ import { Cadeirante } from "../Models/CadeiranteModel.js"
 
 const cadeirante = {} 
 
+function validarInscricao(dados) {
+    const camposObrigatorios = [
+        'nomeCadeirante', 
+        'cpf', 
+        'email', 
+        'TamanhoBlusa', 
+        'ComSemCadeira'
+    ];
+  
+    const camposPreencher = camposObrigatorios.filter(campo => {
+      return !dados[campo] || dados[campo].toString().trim() === '';
+    });
+  
+    if (camposPreencher.length > 0) {
+      return {
+        valido: false,
+        mensagem: `Preencha os campos obrigatórios: ${camposPreencher.join(', ')}`
+      };
+    }
+  
+    return { valido: true };
+  }
+
 //GET
 cadeirante.getCadeirante = async(req, res) => {
     try {

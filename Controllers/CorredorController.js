@@ -3,6 +3,28 @@ import { Corredor } from "../Models/CorredorModel.js"
 
 const corredor = {}
 
+function validarInscricao(dados) {
+    const camposObrigatorios = [
+        'nomeCorredor', 
+        'cpf', 
+        'email', 
+        'TamanhoBlusa'
+    ];
+  
+    const camposPreencher = camposObrigatorios.filter(campo => {
+      return !dados[campo] || dados[campo].toString().trim() === '';
+    });
+  
+    if (camposPreencher.length > 0) {
+      return {
+        valido: false,
+        mensagem: `Preencha os campos obrigatórios: ${camposPreencher.join(', ')}`
+      };
+    }
+  
+    return { valido: true };
+  }
+
 //GET
 corredor.getCorredor = async(req, res) => {
     try {

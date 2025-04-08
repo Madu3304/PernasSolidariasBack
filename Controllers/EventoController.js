@@ -2,6 +2,28 @@ import {Evento } from "../Models/EventosModel.js"
 
 const evento = {}
 
+function validarInscricao(dados) {
+    const camposObrigatorios = [
+        'nomeEvento',  
+        'Distancia', 
+        'DataCorrida', 
+        'LocalCorrida'
+    ];
+  
+    const camposPreencher = camposObrigatorios.filter(campo => {
+      return !dados[campo] || dados[campo].toString().trim() === '';
+    });
+  
+    if (camposPreencher.length > 0) {
+      return {
+        valido: false,
+        mensagem: `Preencha os campos obrigatórios: ${camposPreencher.join(', ')}`
+      };
+    }
+  
+    return { valido: true };
+  }
+
 //GET
 evento.getEvento = async(req, res) => {
     try {
