@@ -1,4 +1,4 @@
-import { Sequelize } from "sequelize";
+import { Sequelize, DataTypes } from "sequelize";
 import sequelize from "../Config/banco.js";
 
 const Cadeirante = sequelize.define('Cadeirante', {
@@ -20,7 +20,8 @@ const Cadeirante = sequelize.define('Cadeirante', {
     },
 
     DataNascimento:{
-        type: Sequelize.DATE,
+        type: DataTypes.DATEONLY,
+        allowNull: false
     },
 
     email:{

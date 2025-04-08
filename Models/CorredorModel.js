@@ -1,4 +1,4 @@
-import { Sequelize } from "sequelize";
+import { Sequelize, DataTypes } from "sequelize";
 import sequelize from "../Config/banco.js";
 
 const Corredor = sequelize.define('Corredor', {
@@ -20,7 +20,7 @@ const Corredor = sequelize.define('Corredor', {
     },
 
     DataNascimento:{
-        type: Sequelize.DateTime,
+        type: DataTypes.DATEONLY,
         allowNull: false
     },
 

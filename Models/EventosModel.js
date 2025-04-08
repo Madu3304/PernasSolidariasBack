@@ -1,8 +1,8 @@
-import { Sequelize } from "sequelize";
+import { Sequelize, DataTypes } from "sequelize";
 import sequelize from "../Config/banco.js";
 
 const Evento = sequelize.define('Evento', {
-    id_cadeirante:{
+    id_Evento:{
         type:Sequelize.INTEGER,
         autoincrement: true,
         PrimaryKey: true
@@ -15,6 +15,16 @@ const Evento = sequelize.define('Evento', {
     },
 
     Distancia: {
+        type: Sequelize.STRING,
+        allowNull: false
+    }, 
+
+    DataCorrida: {
+        type: DataTypes.DATEONLY,
+        allowNull: false
+    },    
+
+    LocalCorrida:{
         type: Sequelize.STRING,
         allowNull: false
     }

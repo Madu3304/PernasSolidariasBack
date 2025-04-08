@@ -36,7 +36,7 @@ corredor.createCorredor = async(req, res) => {
 
 corredor.updateCorredor = async(req, res) => {
     try {
-            const {  id_cadeirante } = req.params
+            const {  id_corredor } = req.params
             const { nomeCorredor, cpf, DataNascimento, email, TamanhoBlusa, Distancia } = req.body
             await Corredor.update({
                 nomeCorredor: nomeCorredor, 
@@ -56,5 +56,20 @@ corredor.updateCorredor = async(req, res) => {
     }
 }
 
+//DELETE
+corredor.deleteCorredor = async(req, res) => {
 
-export { Corredor }
+    try {
+        const { id_corredor} = req.params
+        await Corredor.destroy({
+            Where: { id_corredor: id_corredor}
+        })
+
+        res.send({message: 'Corredor deletado com sucesso'})
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+export { corredor }
