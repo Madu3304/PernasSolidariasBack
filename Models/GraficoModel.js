@@ -4,7 +4,7 @@ import sequelize from "../Config/banco.js";
 const Grafico = sequelize.define('Grafico', {
     id_Grafico:{
         type:Sequelize.INTEGER,
-        autoincrement: true,
+        autoIncrement: true,
         PrimaryKey: true
     },
 
@@ -15,12 +15,13 @@ const Grafico = sequelize.define('Grafico', {
     
     id_corredor: {
         type: Sequelize.INTEGER,
+        autoIncrement: true,
         allowNull: true,
     },
     
     id_Evento:{
         type:Sequelize.INTEGER,
-        autoincrement: true,
+        autoIncrement: true,
         PrimaryKey: true
     },
 })

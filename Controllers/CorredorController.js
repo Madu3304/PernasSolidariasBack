@@ -1,4 +1,3 @@
-import { Where } from "sequelize/lib/utils"
 import { Corredor } from "../Models/CorredorModel.js"
 
 const corredor = {}

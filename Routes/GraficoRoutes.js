@@ -1,17 +1,8 @@
 import express from 'express'
-const router = express.Router()
-import { Grafico } from "../Models/GraficoModel.js"
- 
-router.get("/grafico", async (req, res) => {
-  try {
-    const dados = await db.Evento.findAll()
-    
-    res.json(dados)
+import { buscarDadosGrafico } from "../Controllers/GraficoController.js"
 
-  } catch (error) {
-    console.error("Erro ao buscar dados do gráfico:", error)
-    res.status(500).json({ error: "Erro ao buscar dados" })
-  }
-})
+const router = express.Router()
+
+router.get('buscarDadosGrafico', getGrafico)
 
 export {router}
