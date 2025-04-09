@@ -2,22 +2,27 @@ import { Sequelize } from "sequelize";
 import sequelize from "../Config/banco.js";
 
 const Grafico = sequelize.define('Grafico', {
-    id_Evento:{
+    id_Grafico:{
         type:Sequelize.INTEGER,
         autoincrement: true,
         PrimaryKey: true
     },
 
-    nomeEvento:{
-        type:Sequelize.STRING,
-        allowNull: false
-
+    id_cadeirante: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
     },
-
-    Distancia: {
-        type: Sequelize.STRING,
-        allowNull: false
-    }
+    
+    id_corredor: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+    },
+    
+    id_Evento:{
+        type:Sequelize.INTEGER,
+        autoincrement: true,
+        PrimaryKey: true
+    },
 })
 
 export {Grafico}

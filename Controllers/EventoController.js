@@ -1,4 +1,4 @@
-import {Evento } from "../Models/EventosModel.js"
+import { Evento } from "../Models/EventosModel.js"
 
 const evento = {}
 

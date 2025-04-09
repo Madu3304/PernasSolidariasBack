@@ -12,14 +12,16 @@ const Relatorio = sequelize.define("Relatorio", {
     type: Sequelize.STRING,
     allowNull: true // só se for cadeirante
   },
+ 
+  id_cadeirante: {
+    type: Sequelize.INTEGER,
+    allowNull: true,
+  },
 
-  Relatorio.belongsTo(nomeCadeirante, {
-    foreignKey: "id_cadeirante"
-  });
-  
-  Relatorio.belongsTo(nomeCorredor, {
-    foreignKey: "id_corredor"
-  });
+  id_corredor: {
+    type: Sequelize.INTEGER,
+    allowNull: true,
+  },
 
 });
 
