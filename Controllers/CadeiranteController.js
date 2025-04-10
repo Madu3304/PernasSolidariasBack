@@ -1,4 +1,5 @@
 import { Cadeirante } from "../Models/CadeiranteModel.js"
+import { sequelize } from "../Config/banco.js"
 
 const cadeirante = {} 
 

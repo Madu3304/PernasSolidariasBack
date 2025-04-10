@@ -1,5 +1,5 @@
 import { Corredor } from "../Models/CorredorModel.js"
-
+import { sequelize } from "../Config/banco.js"
 const corredor = {}
 
 function validarInscricao(dados) {

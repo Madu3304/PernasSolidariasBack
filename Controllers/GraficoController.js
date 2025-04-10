@@ -2,7 +2,7 @@ import { Cadeirante } from "../Models/CadeiranteModel.js"
 import { Corredor } from "../Models/CorredorModel.js"
 import { Grafico } from "../Models/GraficoModel.js"
 import { Evento } from "../Models/EventosModel.js"
-import { Sequelize } from "../Config/banco.js"
+import { sequelize } from "../Config/banco.js"
 
 const buscarDadosGrafico = {}
 

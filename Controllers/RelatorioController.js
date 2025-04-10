@@ -1,4 +1,5 @@
 import { Relatorio, Cadeirante, Corredor } from "../Models/AssociacoesModel.js"
+import { sequelize } from "../Config/banco.js"
 
 const listarRelatorios = {}
 
