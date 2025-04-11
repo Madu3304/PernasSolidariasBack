@@ -1,5 +1,5 @@
 import { Evento } from "../Models/EventosModel.js"
-
+import { sequelize } from "../Config/banco.js"
 const evento = {}
 
 function validarInscricao(dados) {
