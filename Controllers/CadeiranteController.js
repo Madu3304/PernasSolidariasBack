@@ -1,4 +1,6 @@
 import { Cadeirante } from "../Models/CadeiranteModel.js"
+import { Joi } from "joi"
+
 
 const cadeirante = {} 
 
@@ -7,7 +9,6 @@ function validarInscricao(dados) {
         'nomeCadeirante', 
         'cpf', 
         'email', 
-        'TamanhoBlusa', 
         'ComSemCadeira'
     ];
   
@@ -23,7 +24,7 @@ function validarInscricao(dados) {
     }
   
     return { valido: true };
-  }
+}
 
 //GET
 cadeirante.getCadeirante = async(req, res) => {
@@ -38,8 +39,23 @@ cadeirante.getCadeirante = async(req, res) => {
 
 //CREATE
 cadeirante.createCadeirante = async (req, res) => {
+
+    //validação dos dados com a biblioteca "joi". 
+    const userSchema = Joi.object({
+        nomeCadeirante: Joi.string().min(4).required(),
+        cpf: Joi.string().required(),
+        email: Joi.string().email().required(),
+        ComSemCadeira: Joi.string().required()
+    });
+
+    const { error, value } = userSchema.validate(req.body);
+
+    if (error) {
+        return res.status(400).json({ erro: error.details[0].message });
+    }
+
     try {
-            const { nomeCadeirante, cpf, DataNascimento, email, TamanhoBlusa, Distancia, ComSemCadeira} = req.body
+            // const { nomeCadeirante, cpf, DataNascimento, email, TamanhoBlusa, Distancia, ComSemCadeira} = req.body
             const novoCadeirante = await Cadeirante.create({
                 nomeCadeirante: nomeCadeirante, 
                 cpf: cpf, 

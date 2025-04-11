@@ -24,6 +24,7 @@ app.use("/cadeirante", CadeiranteRouter)
 app.use("/corredor", CorredorRouter)
 app.use("/evento", EventoRouter)
 app.use("/Relatorio", RelatorioRoutes)
+app.use("/Grafico", GraficoRouter)
 c
 await sequelize.sync()
 
