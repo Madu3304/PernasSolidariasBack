@@ -1,10 +1,5 @@
 import { Cadeirante } from "../Models/CadeiranteModel.js"
-<<<<<<< HEAD
-import { Joi } from "joi"
-
-=======
-import { sequelize } from "../Config/banco.js"
->>>>>>> 4f5967b04eae6b1d82ff29c97c2ca23fd0011015
+import Joi from 'joi'
 
 const cadeirante = {} 
 
@@ -12,8 +7,7 @@ function validarInscricao(dados) {
     const camposObrigatorios = [
         'nomeCadeirante', 
         'cpf', 
-        'email', 
-        'ComSemCadeira'
+        'email'
     ];
   
     const camposPreencher = camposObrigatorios.filter(campo => {

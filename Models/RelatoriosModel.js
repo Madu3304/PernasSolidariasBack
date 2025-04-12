@@ -1,5 +1,5 @@
 import { Sequelize, DataTypes } from "sequelize";
-import sequelize from "../Config/banco.js";
+import { sequelize } from "../Config/banco.js";
 
 const Relatorio = sequelize.define("Relatorio", {
   id_relatorio: {
@@ -10,7 +10,7 @@ const Relatorio = sequelize.define("Relatorio", {
 
   ComSemCadeira: {
     type: Sequelize.STRING,
-    allowNull: true // só se for cadeirante
+    allowNull: true,
   },
  
   id_cadeirante: {

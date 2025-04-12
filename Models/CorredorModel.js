@@ -1,5 +1,5 @@
 import { Sequelize, DataTypes } from "sequelize";
-import sequelize from "../Config/banco.js";
+import { sequelize } from "../Config/banco.js";
 
 const Corredor = sequelize.define('Corredor', {
     id_corredor:{

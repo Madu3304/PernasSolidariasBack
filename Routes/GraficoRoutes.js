@@ -3,6 +3,6 @@ import { buscarDadosGrafico } from "../Controllers/GraficoController.js"
 
 const router = express.Router()
 
-router.get('buscarDadosGrafico', getGrafico)
+router.get('buscarDadosGrafico', buscarDadosGrafico.getGrafico)
 
 export {router}

@@ -1,11 +1,11 @@
 import { Sequelize } from "sequelize";
-import sequelize from "../Config/banco.js";
+import { sequelize } from "../Config/banco.js";
 
 const Grafico = sequelize.define('Grafico', {
     id_Grafico:{
         type:Sequelize.INTEGER,
-        autoIncrement: true,
-        PrimaryKey: true
+        primaryKey: true,
+        autoIncrement: true
     },
 
     id_cadeirante: {
@@ -15,14 +15,12 @@ const Grafico = sequelize.define('Grafico', {
     
     id_corredor: {
         type: Sequelize.INTEGER,
-        autoIncrement: true,
         allowNull: true,
     },
     
     id_Evento:{
         type:Sequelize.INTEGER,
-        autoIncrement: true,
-        PrimaryKey: true
+        allowNull: true,
     },
 })
 

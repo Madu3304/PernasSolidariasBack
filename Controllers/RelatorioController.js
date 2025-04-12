@@ -1,12 +1,9 @@
 import { Relatorio, Cadeirante, Corredor } from "../Models/AssociacoesModel.js"
-<<<<<<< HEAD
-import { ExcelJS } from "exceljs"
-import { express } from "express"
+import express from "express"
+import pkg from 'exceljs'
+const { ExcelJS } = pkg
 
 const app = express();
-=======
-import { sequelize } from "../Config/banco.js"
->>>>>>> 4f5967b04eae6b1d82ff29c97c2ca23fd0011015
 
 const listarRelatorios = {}
 
