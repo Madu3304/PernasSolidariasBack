@@ -5,9 +5,8 @@ const cadeirante = {}
 
 function validarInscricao(dados) {
     const camposObrigatorios = [
-        'nomeCadeirante', 
-        'cpf', 
-        'email'
+        'nomeCompletoCadeirante', 
+        'cpfCadeirante'
     ];
   
     const camposPreencher = camposObrigatorios.filter(campo => {
@@ -39,29 +38,26 @@ cadeirante.getCadeirante = async(req, res) => {
 cadeirante.createCadeirante = async (req, res) => {
 
     //validação dos dados com a biblioteca "joi". 
-    const userSchema = Joi.object({
-        nomeCadeirante: Joi.string().min(4).required(),
-        cpf: Joi.string().required(),
-        email: Joi.string().email().required(),
-        ComSemCadeira: Joi.string().required()
-    });
+    // const userSchema = Joi.object({
+    //     nomeCompletoCadeirante: Joi.string().min(4).required(),
+    //     cpfCadeirante: Joi.string().required(),
+    //     ComSemCadeira: Joi.string().required()
+    // });
 
-    const { error, value } = userSchema.validate(req.body);
+    const { error } = userSchema.validate(req.body);
 
     if (error) {
         return res.status(400).json({ erro: error.details[0].message });
     }
 
     try {
-            // const { nomeCadeirante, cpf, DataNascimento, email, TamanhoBlusa, Distancia, ComSemCadeira} = req.body
+            const { nomeCompletoCadeirante, cpfCadeirante, tamanhoBlusa, distanciaCadeirante, comSemCadeira} = req.body
             const novoCadeirante = await Cadeirante.create({
-                nomeCadeirante: nomeCadeirante, 
-                cpf: cpf, 
-                DataNascimento: DataNascimento, 
-                email: email, 
-                TamanhoBlusa: TamanhoBlusa, 
-                Distancia: Distancia, 
-                ComSemCadeira: ComSemCadeira
+                nomeCompletoCadeirante: nomeCompletoCadeirante, 
+                cpfCadeirante: cpfCadeirante, 
+                tamanhoBlusa: tamanhoBlusa, 
+                distanciaCadeirante: distanciaCadeirante, 
+                comSemCadeira: comSemCadeira
             })
             res.send(novoCadeirante)
 
@@ -74,15 +70,12 @@ cadeirante.createCadeirante = async (req, res) => {
 cadeirante.updateCadeirante = async(req, res) => {
     try {
             const { id_cadeirante } = req.params
-            const { nomeCadeirante, cpf, DataNascimento, email, TamanhoBlusa, Distancia, ComSemCadeira } = req.body
+            const { nomeCompletoCadeirante, cpfCadeirante, tamanhoBlusa, distanciaCadeirante} = req.body
             await Cadeirante.update({
-                nomeCadeirante: nomeCadeirante, 
-                cpf: cpf, 
-                DataNascimento: DataNascimento, 
-                email: email, 
-                TamanhoBlusa: TamanhoBlusa, 
-                Distancia: Distancia, 
-                ComSemCadeira: ComSemCadeira
+                nomeCompletoCadeirante: nomeCompletoCadeirante, 
+                cpfCadeirante: cpfCadeirante,  
+                tamanhoBlusa: tamanhoBlusa, 
+                distanciaCadeirante: distanciaCadeirante
             }, 
             {Where: { id_cadeirante: id_cadeirante}})
 

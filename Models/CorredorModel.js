@@ -8,37 +8,21 @@ const Corredor = sequelize.define('Corredor', {
         PrimaryKey: true
     },
 
-    nomeCorredor:{
+    nomeCompletoCorredor:{
         type:Sequelize.STRING,
         allowNull: false
 
     },
 
-    cpf:{
+    cpfCorredor:{
         type: Sequelize.STRING,
-        allowNull: false
-    },
-
-    DataNascimento:{
-        type: DataTypes.DATEONLY,
-        allowNull: false
-    },
-
-    email:{
-        type:Sequelize.STRING,
         allowNull: false
     },
 
     TamanhoBlusa: {
         type: Sequelize.STRING,
         allowNull: false
-    },
-
-    Distancia: {
-        type: Sequelize.STRING,
-        allowNull: false
     }
-
 })
 
 export {Corredor}

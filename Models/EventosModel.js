@@ -14,17 +14,17 @@ const Evento = sequelize.define('Evento', {
 
     },
 
-    Distancia: {
+    distancia: {
         type: Sequelize.STRING,
         allowNull: false
     }, 
 
-    DataCorrida: {
+    dataCorrida: {
         type: DataTypes.DATEONLY,
         allowNull: false
     },    
 
-    LocalCorrida:{
+    localCorrida:{
         type: Sequelize.STRING,
         allowNull: false
     }

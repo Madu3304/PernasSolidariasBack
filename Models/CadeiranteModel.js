@@ -8,24 +8,14 @@ const Cadeirante = sequelize.define('Cadeirante', {
         PrimaryKey: true
     },
 
-    nomeCadeirante:{
+    nomeCompletoCadeirante:{
         type:Sequelize.STRING,
         allowNull: false
 
     },
 
-    cpf:{
+    cpfCadeirante:{
         type: Sequelize.STRING,
-        allowNull: false
-    },
-
-    DataNascimento:{
-        type: DataTypes.DATEONLY,
-        allowNull: false
-    },
-
-    email:{
-        type:Sequelize.STRING,
         allowNull: false
     },
 
@@ -34,7 +24,7 @@ const Cadeirante = sequelize.define('Cadeirante', {
         allowNull: false
     },
 
-    Distancia: {
+    distanciaCadeirante: {
         type: Sequelize.STRING,
         allowNull: false
     },
