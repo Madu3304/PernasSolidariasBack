@@ -4,8 +4,8 @@ import { sequelize } from "../Config/banco.js";
 const Corredor = sequelize.define('Corredor', {
     id_corredor:{
         type:Sequelize.INTEGER,
-        autoincrement: true,
-        PrimaryKey: true
+        autoIncrement: true,
+        primaryKey: true
     },
 
     nomeCompletoCorredor:{
@@ -23,6 +23,8 @@ const Corredor = sequelize.define('Corredor', {
         type: Sequelize.STRING,
         allowNull: false
     }
+}, {
+    freezeTableName: true
 })
 
 export {Corredor}

@@ -23,6 +23,8 @@ const Relatorio = sequelize.define("Relatorio", {
     allowNull: true,
   },
 
+}, {
+  freezeTableName: true
 });
 
 export { Relatorio };

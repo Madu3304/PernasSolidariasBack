@@ -22,6 +22,8 @@ const Grafico = sequelize.define('Grafico', {
         type:Sequelize.INTEGER,
         allowNull: true,
     },
+}, {
+    freezeTableName: true
 })
 
 export {Grafico}

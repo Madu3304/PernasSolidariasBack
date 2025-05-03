@@ -44,11 +44,11 @@ cadeirante.createCadeirante = async (req, res) => {
     //     ComSemCadeira: Joi.string().required()
     // });
 
-    const { error } = userSchema.validate(req.body);
+    // const { error } = userSchema.validate(req.body);
 
-    if (error) {
-        return res.status(400).json({ erro: error.details[0].message });
-    }
+    // if (error) {
+    //     return res.status(400).json({ erro: error.details[0].message });
+    // }
 
     try {
             const { nomeCompletoCadeirante, cpfCadeirante, tamanhoBlusa, distanciaCadeirante, comSemCadeira} = req.body

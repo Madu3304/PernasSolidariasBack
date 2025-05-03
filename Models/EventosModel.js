@@ -4,8 +4,8 @@ import { sequelize } from "../Config/banco.js";
 const Evento = sequelize.define('Evento', {
     id_Evento:{
         type:Sequelize.INTEGER,
-        autoincrement: true,
-        PrimaryKey: true
+        autoIncrement: true,
+        primaryKey: true
     },
 
     nomeEvento:{
@@ -28,6 +28,8 @@ const Evento = sequelize.define('Evento', {
         type: Sequelize.STRING,
         allowNull: false
     }
+}, {
+    freezeTableName: true
 })
 
 export {Evento}

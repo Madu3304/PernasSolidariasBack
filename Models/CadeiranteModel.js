@@ -4,8 +4,8 @@ import { sequelize } from "../Config/banco.js";
 const Cadeirante = sequelize.define('Cadeirante', {
     id_cadeirante:{
         type:Sequelize.INTEGER,
-        autoincrement: true,
-        PrimaryKey: true
+        autoIncrement: true,
+        primaryKey: true
     },
 
     nomeCompletoCadeirante:{
@@ -13,27 +13,28 @@ const Cadeirante = sequelize.define('Cadeirante', {
         allowNull: false
 
     },
-
     cpfCadeirante:{
         type: Sequelize.STRING,
         allowNull: false
     },
 
-    TamanhoBlusa: {
+    tamanhoBlusa: {
         type: Sequelize.STRING,
         allowNull: false
     },
 
-    distanciaCadeirante: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
+    // distanciaCadeirante: {
+    //     type: Sequelize.STRING,
+    //     allowNull: false
+    // },
 
     ComSemCadeira: {
         type: Sequelize.STRING,
         allowNull: false
     }
 
+}, {
+    freezeTableName: true
 })
 
 export {Cadeirante}
