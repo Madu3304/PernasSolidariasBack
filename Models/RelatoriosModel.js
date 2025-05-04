@@ -8,7 +8,7 @@ const Relatorio = sequelize.define("Relatorio", {
     primaryKey: true
   },
 
-  ComSemCadeira: {
+  s_n_cadeira: {
     type: Sequelize.STRING,
     allowNull: true,
   },
@@ -24,7 +24,8 @@ const Relatorio = sequelize.define("Relatorio", {
   },
 
 }, {
-  freezeTableName: true
+  freezeTableName: true,
+  timestamps: false
 });
 
 export { Relatorio };

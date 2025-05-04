@@ -26,7 +26,7 @@ app.use("/evento", EventoRouter)
 app.use("/Relatorio", RelatorioRoutes)
 app.use("/Grafico", GraficoRouter)
 
-await sequelize.drop()
+await sequelize.drop({force: true})
 await sequelize.sync()
 
 

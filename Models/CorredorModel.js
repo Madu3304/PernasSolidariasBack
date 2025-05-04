@@ -8,23 +8,24 @@ const Corredor = sequelize.define('Corredor', {
         primaryKey: true
     },
 
-    nomeCompletoCorredor:{
+    nm_corredor:{
         type:Sequelize.STRING,
         allowNull: false
 
     },
 
-    cpfCorredor:{
+    cpf_corredor:{
         type: Sequelize.STRING,
         allowNull: false
     },
 
-    TamanhoBlusa: {
+    tamanho_blusa: {
         type: Sequelize.STRING,
         allowNull: false
     }
 }, {
-    freezeTableName: true
+    freezeTableName: true,
+    timestamps: false
 })
 
 export {Corredor}

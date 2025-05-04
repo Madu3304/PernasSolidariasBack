@@ -29,7 +29,8 @@ const Evento = sequelize.define('Evento', {
         allowNull: false
     }
 }, {
-    freezeTableName: true
+    freezeTableName: true,
+    timestamps: false
 })
 
 export {Evento}

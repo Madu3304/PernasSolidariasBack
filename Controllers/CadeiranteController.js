@@ -5,8 +5,8 @@ const cadeirante = {}
 
 function validarInscricao(dados) {
     const camposObrigatorios = [
-        'nomeCompletoCadeirante', 
-        'cpfCadeirante'
+        'nm_cadeirante', 
+        'cpf_cadeirante'
     ];
   
     const camposPreencher = camposObrigatorios.filter(campo => {
@@ -39,9 +39,9 @@ cadeirante.createCadeirante = async (req, res) => {
 
     //validação dos dados com a biblioteca "joi". 
     // const userSchema = Joi.object({
-    //     nomeCompletoCadeirante: Joi.string().min(4).required(),
-    //     cpfCadeirante: Joi.string().required(),
-    //     ComSemCadeira: Joi.string().required()
+    //     nm_cadeirante: Joi.string().min(4).required(),
+    //     cpf_cadeirante: Joi.string().required(),
+    //     s_n_cadeira: Joi.string().required()
     // });
 
     // const { error } = userSchema.validate(req.body);
@@ -51,13 +51,13 @@ cadeirante.createCadeirante = async (req, res) => {
     // }
 
     try {
-            const { nomeCompletoCadeirante, cpfCadeirante, tamanhoBlusa, distanciaCadeirante, comSemCadeira} = req.body
+            const { nm_cadeirante, cpf_cadeirante, tamanho_blusa, distanciaCadeirante, s_n_cadeira} = req.body
             const novoCadeirante = await Cadeirante.create({
-                nomeCompletoCadeirante: nomeCompletoCadeirante, 
-                cpfCadeirante: cpfCadeirante, 
-                tamanhoBlusa: tamanhoBlusa, 
+                nm_cadeirante: nm_cadeirante, 
+                cpf_cadeirante: cpf_cadeirante, 
+                tamanho_blusa: tamanho_blusa, 
                 distanciaCadeirante: distanciaCadeirante, 
-                comSemCadeira: comSemCadeira
+                s_n_cadeira: s_n_cadeira
             })
             res.send(novoCadeirante)
 
@@ -70,11 +70,11 @@ cadeirante.createCadeirante = async (req, res) => {
 cadeirante.updateCadeirante = async(req, res) => {
     try {
             const { id_cadeirante } = req.params
-            const { nomeCompletoCadeirante, cpfCadeirante, tamanhoBlusa, distanciaCadeirante} = req.body
+            const { nm_cadeirante, cpf_cadeirante, tamanho_blusa, distanciaCadeirante} = req.body
             await Cadeirante.update({
-                nomeCompletoCadeirante: nomeCompletoCadeirante, 
-                cpfCadeirante: cpfCadeirante,  
-                tamanhoBlusa: tamanhoBlusa, 
+                nm_cadeirante: nm_cadeirante, 
+                cpf_cadeirante: cpf_cadeirante,  
+                tamanho_blusa: tamanho_blusa, 
                 distanciaCadeirante: distanciaCadeirante
             }, 
             {Where: { id_cadeirante: id_cadeirante}})

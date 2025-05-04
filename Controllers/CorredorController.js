@@ -4,8 +4,8 @@ const corredor = {}
 
 function validarInscricao(dados) {
     const camposObrigatorios = [
-        'nomeCompletoCorredor', 
-        'cpfCorredor'
+        'nm_corredor', 
+        'cpf_corredor'
     ];
   
     const camposPreencher = camposObrigatorios.filter(campo => {
@@ -37,11 +37,11 @@ corredor.getCorredor = async(req, res) => {
 //CREATE
 corredor.createCorredor = async(req, res) => {
     try {
-            const { nomeCompletoCorredor, cpfCorredor, TamanhoBlusa } = req.body
+            const { nm_corredor, cpf_corredor, tamanho_blusa } = req.body
             const novoCorredor = await Corredor.create({
-                nomeCompletoCorredor: nomeCompletoCorredor, 
-                cpfCorredor: cpfCorredor, 
-                TamanhoBlusa: TamanhoBlusa, 
+                nm_corredor: nm_corredor, 
+                cpf_corredor: cpf_corredor, 
+                tamanho_blusa: tamanho_blusa, 
             })
             res.send(novoCorredor)
 
@@ -53,11 +53,11 @@ corredor.createCorredor = async(req, res) => {
 corredor.updateCorredor = async(req, res) => {
     try {
             const {  id_corredor } = req.params
-            const { nomeCompletoCorredor, cpfCorredor, TamanhoBlusa } = req.body
+            const { nm_corredor, cpf_corredor, tamanho_blusa } = req.body
             await Corredor.update({
-                nomeCompletoCorredor: nomeCompletoCorredor, 
-                cpfCorredor: cpfCorredor, 
-                TamanhoBlusa: TamanhoBlusa, 
+                nm_corredor: nm_corredor, 
+                cpf_corredor: cpf_corredor, 
+                tamanho_blusa: tamanho_blusa, 
             },
             {where: { id_corredor: id_corredor }})
 

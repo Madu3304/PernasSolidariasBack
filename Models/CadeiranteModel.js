@@ -8,17 +8,17 @@ const Cadeirante = sequelize.define('Cadeirante', {
         primaryKey: true
     },
 
-    nomeCompletoCadeirante:{
+    nm_cadeirante:{
         type:Sequelize.STRING,
         allowNull: false
 
     },
-    cpfCadeirante:{
+    cpf_cadeirante:{
         type: Sequelize.STRING,
         allowNull: false
     },
 
-    tamanhoBlusa: {
+    tamanho_blusa: {
         type: Sequelize.STRING,
         allowNull: false
     },
@@ -28,13 +28,14 @@ const Cadeirante = sequelize.define('Cadeirante', {
     //     allowNull: false
     // },
 
-    ComSemCadeira: {
+    s_n_cadeira: {
         type: Sequelize.STRING,
         allowNull: false
     }
 
 }, {
-    freezeTableName: true
+    freezeTableName: true,
+    timestamps: false
 })
 
 export {Cadeirante}

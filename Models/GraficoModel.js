@@ -23,7 +23,8 @@ const Grafico = sequelize.define('Grafico', {
         allowNull: true,
     },
 }, {
-    freezeTableName: true
+    freezeTableName: true,
+    timestamps: false
 })
 
 export {Grafico}
