@@ -51,12 +51,12 @@ cadeirante.createCadeirante = async (req, res) => {
     // }
 
     try {
-            const { nm_cadeirante, cpf_cadeirante, tamanho_blusa, distanciaCadeirante, s_n_cadeira} = req.body
+            const { nm_cadeirante, cpf_cadeirante, tamanho_blusa, s_n_cadeira} = req.body
             const novoCadeirante = await Cadeirante.create({
                 nm_cadeirante: nm_cadeirante, 
                 cpf_cadeirante: cpf_cadeirante, 
                 tamanho_blusa: tamanho_blusa, 
-                distanciaCadeirante: distanciaCadeirante, 
+                // distanciaCadeirante: distanciaCadeirante, 
                 s_n_cadeira: s_n_cadeira
             })
             res.send(novoCadeirante)
@@ -70,12 +70,12 @@ cadeirante.createCadeirante = async (req, res) => {
 cadeirante.updateCadeirante = async(req, res) => {
     try {
             const { id_cadeirante } = req.params
-            const { nm_cadeirante, cpf_cadeirante, tamanho_blusa, distanciaCadeirante} = req.body
+            const { nm_cadeirante, cpf_cadeirante, tamanho_blusa} = req.body
             await Cadeirante.update({
                 nm_cadeirante: nm_cadeirante, 
                 cpf_cadeirante: cpf_cadeirante,  
                 tamanho_blusa: tamanho_blusa, 
-                distanciaCadeirante: distanciaCadeirante
+                // distanciaCadeirante: distanciaCadeirante
             }, 
             {Where: { id_cadeirante: id_cadeirante}})
 

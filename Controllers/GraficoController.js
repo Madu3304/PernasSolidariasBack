@@ -29,7 +29,7 @@ buscarDadosGrafico.getGrafico= async (req, res) => {
     const eventos = await Grafico.findAll({
       attributes: ['id_evento', [sequelize.fn('COUNT', 'id_evento'), 'quantidade']],
       group: ['id_evento'],
-      include: [{ model: Evento, attributes: ['nomeEvento'] }],
+      include: [{ model: Evento, attributes: ['nm_evento'] }],
       order: [[sequelize.literal('quantidade'), 'DESC']],
       limit: 5
     })

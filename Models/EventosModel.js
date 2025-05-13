@@ -2,29 +2,29 @@ import { Sequelize, DataTypes } from "sequelize";
 import { sequelize } from "../Config/banco.js";
 
 const Evento = sequelize.define('Evento', {
-    id_Evento:{
+    id_evento:{
         type:Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
 
-    nomeEvento:{
+    nm_evento:{
         type:Sequelize.STRING,
         allowNull: false
 
     },
 
     distancia: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         allowNull: false
     }, 
 
-    dataCorrida: {
+    dt_corrida: {
         type: DataTypes.DATEONLY,
         allowNull: false
     },    
 
-    localCorrida:{
+    local_corrida:{
         type: Sequelize.STRING,
         allowNull: false
     }

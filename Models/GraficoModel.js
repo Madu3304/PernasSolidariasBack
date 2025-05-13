@@ -18,7 +18,7 @@ const Grafico = sequelize.define('Grafico', {
         allowNull: true,
     },
     
-    id_Evento:{
+    id_evento:{
         type:Sequelize.INTEGER,
         allowNull: true,
     },

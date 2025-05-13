@@ -4,10 +4,10 @@ const evento = {}
 
 function validarInscricao(dados) {
     const camposObrigatorios = [
-        'nomeEvento',  
+        'nm_evento',  
         'distancia', 
-        'dataCorrida', 
-        'localCorrida'
+        'dt_corrida', 
+        'local_corrida'
     ];
   
     const camposPreencher = camposObrigatorios.filter(campo => {
@@ -38,12 +38,12 @@ evento.getEvento = async(req, res) => {
 //CREATE 
 evento.createEvento = async (req, res) => {
     try {
-            const { nomeEvento,  distancia, dataCorrida, localCorrida} = req.body
+            const { nm_evento,  distancia, dt_corrida, local_corrida} = req.body
             const novoEvento = await Evento.create({
-                nomeEvento: nomeEvento,  
+                nm_evento: nm_evento,  
                 distancia: distancia, 
-                dataCorrida: dataCorrida, 
-                localCorrida: localCorrida
+                dt_corrida: dt_corrida, 
+                local_corrida: local_corrida
             })
             
             res.send(novoEvento)
@@ -56,17 +56,17 @@ evento.createEvento = async (req, res) => {
 //UPDATE
 evento.updateEvento = async(req, res) => {
     try {
-            const { id_Evento } = req.params
-            const { nomeEvento, distancia, dataCorrida, localCorrida} = req.body
+            const { id_evento } = req.params
+            const { nm_evento, distancia, dt_corrida, local_corrida} = req.body
             await Evento.update({
-                nomeEvento: nomeEvento,  
+                nm_evento: nm_evento,  
                 distancia: distancia, 
-                dataCorrida: dataCorrida, 
-                localCorrida: localCorrida
+                dt_corrida: dt_corrida, 
+                local_corrida: local_corrida
             }, 
-        {where: {id_Evento: id_Evento}})
+        {where: {id_evento: id_evento}})
         
-            const evento_atualizado = await Evento.findByPk(id_Evento)
+            const evento_atualizado = await Evento.findByPk(id_evento)
             res.send(evento_atualizado)
 
     } catch (error) {
@@ -77,9 +77,9 @@ evento.updateEvento = async(req, res) => {
 //DELETE
 evento.deleteEvento = async(req, res) => {
     try {
-            const {id_Evento} = req.params
+            const {id_evento} = req.params
             await Evento.destroy({
-                where: {id_Evento: id_Evento}
+                where: {id_evento: id_evento}
             })
             res.send({message: 'Corrida deletada'})
     } catch (error) {
