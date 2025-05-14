@@ -23,11 +23,6 @@ const Cadeirante = sequelize.define('Cadeirante', {
         allowNull: false
     },
 
-    // distanciaCadeirante: {
-    //     type: Sequelize.STRING,
-    //     allowNull: false
-    // },
-
     s_n_cadeira: {
         type: Sequelize.STRING,
         allowNull: false

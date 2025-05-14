@@ -7,21 +7,21 @@ const Relatorio = sequelize.define("Relatorio", {
     autoIncrement: true,
     primaryKey: true
   },
-
-  s_n_cadeira: {
-    type: Sequelize.STRING,
-    allowNull: true,
-  },
  
   id_cadeirante: {
     type: Sequelize.INTEGER,
-    allowNull: true,
+    allowNull: false,
   },
 
   id_corredor: {
     type: Sequelize.INTEGER,
-    allowNull: true,
+    allowNull: false,
   },
+
+  id_evento: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  }
 
 }, {
   freezeTableName: true,

@@ -1,6 +1,7 @@
 import { Relatorio } from "./RelatoriosModel.js"
 import { Cadeirante } from "./CadeiranteModel.js";
 import { Corredor } from "./CorredorModel.js";
+import { Evento } from "./EventosModel.js";
 
 
 Relatorio.belongsTo(Cadeirante, {
@@ -13,7 +14,13 @@ Relatorio.belongsTo(Corredor, {
   as: "corredor"
 });
 
+Relatorio.belongsTo(Evento,{
+  foreignKey: "id_evento",
+  as: "evento"
+})
+
 Cadeirante.hasMany(Relatorio, { foreignKey: "id_cadeirante" });
 Corredor.hasMany(Relatorio, { foreignKey: "id_corredor" });
+Evento.hasMany(Relatorio, {foreignKey: "id_evento"})
 
 export { Relatorio, Cadeirante, Corredor };

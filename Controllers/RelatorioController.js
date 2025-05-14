@@ -1,11 +1,29 @@
 import { Relatorio, Cadeirante, Corredor } from "../Models/AssociacoesModel.js"
 import express from "express"
 import pkg from 'exceljs'
+import { sequelize } from "../Config/banco.js";
 const { ExcelJS } = pkg
 
 const app = express();
 
 const listarRelatorios = {}
+
+listarRelatorios.getGraficoCadeirante = async(req, res)=>{
+  try {
+    const resultados = await sequelize.query(`
+        SELECT c.nm_cadeirante AS nome, COUNT(*) AS qtd
+        FROM relatorio r
+        INNER JOIN cadeirante c ON c.id_cadeirante = r.id_cadeirante
+        GROUP BY c.nm_cadeirante
+        ORDER BY qtd DESC;
+      `, {type: sequelize.QueryTypes.SELECT})
+
+      res.json(resultados)
+  } catch (error) {
+    console.error('Erro ao tentar buscar dados do gráfico de cadeirantes:', error)
+    res.status(500).send("Erro ao buscar dados do gráfico")
+  }
+}
 
 app.get('/exportar-usuarios', async (req, res) => {
   const workbook = new ExcelJS.Workbook();
