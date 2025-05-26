@@ -12,6 +12,7 @@ const router = express.Router();
 
 router.get('/relatorios', getlistarRelatorios)
 router.get('/grafico-cadeirantes', getGraficoCadeirante)
+router.delete('/relatorios/:id', deletelistarRelatorios);
 
 
 export {router}

@@ -69,4 +69,19 @@ listarRelatorios.getlistarRelatorios= async (req, res) => {
     }
   };
   
+  listarRelatorios.deletelistarRelatorios = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const relatorio = await Relatorio.findByPk(id);
+        if (!relatorio) {
+            return res.status(404).json({ error: "Relatório não encontrado" });
+        }
+        await relatorio.destroy();
+        res.status(200).json({ message: "Relatório deletado com sucesso" });
+    } catch (error) {
+        console.error("Erro ao deletar relatório:", error);
+        res.status(500).json({ error: "Erro ao deletar relatório" });
+    }
+};
+
   export { listarRelatorios }                                                             
