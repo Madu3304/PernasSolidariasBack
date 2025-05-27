@@ -23,4 +23,9 @@ Cadeirante.hasMany(Relatorio, { foreignKey: "id_cadeirante" });
 Corredor.hasMany(Relatorio, { foreignKey: "id_corredor" });
 Evento.hasMany(Relatorio, {foreignKey: "id_evento"})
 
+// Relatorio.belongsTo(Cadeirante, { foreignKey: 'id_cadeirante', as: 'cadeirante' });
+// Relatorio.belongsTo(Corredor, { foreignKey: 'id_corredor', as: 'corredor' });
+
+
 export { Relatorio, Cadeirante, Corredor };
+

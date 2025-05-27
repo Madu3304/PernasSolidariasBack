@@ -26,6 +26,11 @@ const Relatorio = sequelize.define("Relatorio", {
 }, {
   freezeTableName: true,
   timestamps: false
-});
+},
+
+Relatorio.belongsTo(Cadeirante, { foreignKey: 'id_cadeirante', as: 'cadeirante' }),
+Relatorio.belongsTo(Corredor, { foreignKey: 'id_corredor', as: 'corredor' })
+
+);
 
 export { Relatorio };

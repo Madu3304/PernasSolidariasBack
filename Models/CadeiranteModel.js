@@ -4,8 +4,8 @@ import { sequelize } from "../Config/banco.js";
 const Cadeirante = sequelize.define('Cadeirante', {
     id_cadeirante:{
         type:Sequelize.INTEGER,
-        autoIncrement: true,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
     },
 
     nm_cadeirante:{
