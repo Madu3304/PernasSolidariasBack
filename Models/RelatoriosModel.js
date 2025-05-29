@@ -28,8 +28,8 @@ const Relatorio = sequelize.define("Relatorio", {
   timestamps: false
 },
 
-Relatorio.belongsTo(Cadeirante, { foreignKey: 'id_cadeirante', as: 'cadeirante' }),
-Relatorio.belongsTo(Corredor, { foreignKey: 'id_corredor', as: 'corredor' })
+// Relatorio.belongsTo(Cadeirante, { foreignKey: 'id_cadeirante', as: 'cadeirante' }),
+// Relatorio.belongsTo(Corredor, { foreignKey: 'id_corredor', as: 'corredor' })
 
 );
 
