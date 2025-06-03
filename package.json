@@ -4,7 +4,7 @@
   "main": "Index.js",
   "type": "module",
   "scripts": {
-    "test": "jest --runInBand",
+    "test": "jest",
     "start": "nodemon ./Index.js localhost 5000"
   },
   "keywords": [],
