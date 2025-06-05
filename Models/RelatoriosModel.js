@@ -1,36 +1,30 @@
-import { Sequelize, DataTypes } from "sequelize";
-import { sequelize } from "../Config/banco.js";
+import { Relatorio } from "./RelatoriosModel.js"
+import { Cadeirante } from "./CadeiranteModel.js";
+import { Corredor } from "./CorredorModel.js";
+import { Evento } from "./EventosModel.js";
 
-const Relatorio = sequelize.define("Relatorio", {
-  id_relatorio: {
-    type: Sequelize.INTEGER,
-    autoIncrement: true,
-    primaryKey: true
-  },
- 
-  id_cadeirante: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-  },
 
-  id_corredor: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-  },
+Relatorio.belongsTo(Cadeirante, {
+  foreignKey: "id_cadeirante",
+  as: "cadeirante"
+});
 
-  id_evento: {
-    type: Sequelize.INTEGER,
-    allowNull: false
-  }
+Relatorio.belongsTo(Corredor, {
+  foreignKey: "id_corredor",
+  as: "corredor"
+});
 
-}, {
-  freezeTableName: true,
-  timestamps: false
-},
+Relatorio.belongsTo(Evento,{
+  foreignKey: "id_evento",
+  as: "evento"
+})
 
-// Relatorio.belongsTo(Cadeirante, { foreignKey: 'id_cadeirante', as: 'cadeirante' }),
-// Relatorio.belongsTo(Corredor, { foreignKey: 'id_corredor', as: 'corredor' })
+Cadeirante.hasMany(Relatorio, { foreignKey: "id_cadeirante" });
+Corredor.hasMany(Relatorio, { foreignKey: "id_corredor" });
+Evento.hasMany(Relatorio, {foreignKey: "id_evento"})
 
-);
+// Relatorio.belongsTo(Cadeirante, { foreignKey: 'id_cadeirante', as: 'cadeirante' });
+// Relatorio.belongsTo(Corredor, { foreignKey: 'id_corredor', as: 'corredor' });
 
-export { Relatorio };
+export { Relatorio, Cadeirante, Corredor };
+
