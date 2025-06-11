@@ -1,7 +1,7 @@
-import { Relatorio, Cadeirante, Corredor } from "../Models/AssociacoesModel.js"
+import { Duplas, Cadeirante, Corredor } from "../Models/AssociacoesModel.js"
 import express from "express"
 import pkg from 'exceljs'
-import { sequelize } from "../Config/banco.js";
+import { sequelize } from "../Config/banco.js"
 const { ExcelJS } = pkg
 
 const app = express();
@@ -25,34 +25,6 @@ listarRelatorios.getGraficoCadeirante = async(req, res)=>{
   }
 }
 
-app.get('/exportar-usuarios', async (req, res) => {
-  const workbook = new ExcelJS.Workbook();
-  const worksheet = workbook.addWorksheet('Usuários');
-  // Cabeçalho
-  worksheet.columns = [
-    { header: 'ID', key: 'id', width: 10 },
-    { header: 'Nome', key: 'nome', width: 30 },
-    { header: 'Email', key: 'email', width: 30 },
-  ];
-
-  // Dados de exemplo (você pode pegar do banco)
-  const usuarios = [
-    { id: 1, nome: 'Maria Eduarda', email: 'maria@email.com' },
-    { id: 2, nome: 'João Pedro', email: 'joao@email.com' },
-  ];
-
-  usuarios.forEach(usuario => worksheet.addRow(usuario));
-
-  res.setHeader(
-    'Content-Type',
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-  );
-  res.setHeader('Content-Disposition', 'attachment; filename=usuarios.xlsx');
-
-  await workbook.xlsx.write(res);
-  res.end();
-});
-
 
 listarRelatorios.getlistarRelatorios= async (req, res) => {
     try {
@@ -61,27 +33,65 @@ listarRelatorios.getlistarRelatorios= async (req, res) => {
           { model: Cadeirante, as: "cadeirante", attributes: ["nomeCadeirante"] },
           { model: Corredor, as: "corredor", attributes: ["nomeCorredor"] }
         ]
-      });
-      res.json(relatorios);
+      })
+      res.json(relatorios)
     } catch (error) {
       console.error("Erro ao buscar relatórios:", error);
       res.status(500).json({ error: "Erro ao buscar relatórios" })
     }
-  };
-  
-  listarRelatorios.deletelistarRelatorios = async (req, res) => {
-    const { id } = req.params;
-    try {
-        const relatorio = await Relatorio.findByPk(id);
-        if (!relatorio) {
-            return res.status(404).json({ error: "Relatório não encontrado" });
-        }
-        await relatorio.destroy();
-        res.status(200).json({ message: "Relatório deletado com sucesso" });
-    } catch (error) {
-        console.error("Erro ao deletar relatório:", error);
-        res.status(500).json({ error: "Erro ao deletar relatório" });
-    }
-};
+  }
 
-  export { listarRelatorios }                                                             
+//editar
+const updateDupla = async (req, res) => {
+  const { id } = req.params
+  const { cadeiranteId, corredorId } = req.body
+
+  try {
+    const dupla = await Dupla.findByPk(id)
+    if (!dupla) {
+      return res.status(404).json({ mensagem: 'Dupla não encontrada' })
+    }
+
+    dupla.cadeiranteId = cadeiranteId
+    dupla.corredorId = corredorId
+    await dupla.save()
+
+    res.status(200).json(dupla)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ mensagem: 'Erro ao editar dupla' })
+  }
+}
+
+app.get('/exportar-usuarios', async (req, res) => {
+const workbook = new ExcelJS.Workbook()
+const worksheet = workbook.addWorksheet('Relatorio')
+
+// Cabeçalho
+worksheet.columns = [
+  { header: 'Cadeirante', key: 'cadeirante', width: 30 },
+  { header: 'Corredor', key: 'corredor', width: 30 },
+]
+
+// Dados das Relatorio (isso viria da RelatorioController, aqui é exemplo)
+const Relatorio = [
+  { cadeirante: 'Maria Eduarda', corredor: 'Ana Paula' },
+  { cadeirante: 'José Silva', corredor: 'João Pedro' },
+]
+
+// Adiciona cada dupla como linha
+Relatorio.forEach(dupla => worksheet.addRow(dupla))
+
+// Configura a resposta para download do Excel
+res.setHeader(
+  'Content-Type',
+  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+)
+res.setHeader('Content-Disposition', 'attachment; filename=Relatorio.xlsx')
+
+// Gera e envia o arquivo Excel
+await workbook.xlsx.write(res)
+res.end()
+})
+
+export { listarRelatorios }

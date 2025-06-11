@@ -1,31 +1,29 @@
-import { Relatorio } from "./RelatoriosModel.js"
+import { Duplas } from "./DuplasModel.js"
 import { Cadeirante } from "./CadeiranteModel.js";
 import { Corredor } from "./CorredorModel.js";
 import { Evento } from "./EventosModel.js";
 
 
-Relatorio.belongsTo(Cadeirante, {
+Duplas.belongsTo(Cadeirante, {
   foreignKey: "id_cadeirante",
   as: "cadeirante"
 });
 
-Relatorio.belongsTo(Corredor, {
+Duplas.belongsTo(Corredor, {
   foreignKey: "id_corredor",
   as: "corredor"
 });
 
-Relatorio.belongsTo(Evento,{
+Duplas.belongsTo(Evento,{
   foreignKey: "id_evento",
   as: "evento"
 })
 
-Cadeirante.hasMany(Relatorio, { foreignKey: "id_cadeirante" });
-Corredor.hasMany(Relatorio, { foreignKey: "id_corredor" });
-Evento.hasMany(Relatorio, {foreignKey: "id_evento"})
+Cadeirante.hasMany(Duplas, { foreignKey: "id_cadeirante" })
+Corredor.hasMany(Duplas, { foreignKey: "id_corredor" })
+Evento.hasMany(Duplas, {foreignKey: "id_evento"})
 
-// Relatorio.belongsTo(Cadeirante, { foreignKey: 'id_cadeirante', as: 'cadeirante' });
-// Relatorio.belongsTo(Corredor, { foreignKey: 'id_corredor', as: 'corredor' });
+// Duplas.belongsTo(Cadeirante, { foreignKey: 'id_cadeirante', as: 'cadeirante' });
+// Duplas.belongsTo(Corredor, { foreignKey: 'id_corredor', as: 'corredor' });
 
-
-export { Relatorio, Cadeirante, Corredor };
-
+export { Duplas, Cadeirante, Corredor }

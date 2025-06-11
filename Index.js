@@ -4,14 +4,16 @@ import cors from 'cors'
 import { Cadeirante } from "./Models/CadeiranteModel.js"
 import { Corredor } from "./Models/CorredorModel.js"
 import { Evento } from "./Models/EventosModel.js"
+import { Relatorio } from "./Models/RelatoriosModel.js"
+import { Duplas } from "./Models/DuplasModel.js"
+ 
 
 import { router as CadeiranteRouter } from "./Routes/CadeiranteRoutes.js"
 import { router as CorredorRouter } from "./Routes/CorredorRoutes.js"
 import { router as EventoRouter} from "./Routes/EventoRoutes.js"
 import { router as GraficoRouter } from "./Routes/GraficoRoutes.js"
-import { router as RelatorioRoutes } from "./Routes/RelatorioRoutes.js"
-import { Relatorio } from "./Models/RelatoriosModel.js"
-
+import { router as DuplasRouter } from "./Routes/DuplasRoutes.js"
+import { router as RelatorioRoutes } from "./Routes/RelatoriosRoutes.js"
 
 const app = express()
 // const PORT = process.env.PORT || 8080
@@ -38,6 +40,15 @@ const insercao = async () => {
         {id_cadeirante: 2, id_corredor: 2, id_evento: 2},
         {id_cadeirante: 1, id_corredor: 2, id_evento: 2},
     ])
+    await Relatorio.drop();     
+    await Evento.drop()
+
+    await Duplas.bulkCreate([
+        {id_cadeirante: 1, id_corredor: 1, id_evento: 1},
+        {id_cadeirante: 2, id_corredor: 2, id_evento: 2},
+        {id_cadeirante: 1, id_corredor: 2, id_evento: 2},
+    ])
+
 }
 
 const insercaoExtra = async () => {
@@ -76,8 +87,9 @@ app.use("/corredor", CorredorRouter)
 app.use("/evento", EventoRouter)
 app.use("/Relatorio", RelatorioRoutes)
 app.use("/Grafico", GraficoRouter)
+app.use("/Duplas", DuplasRouter)
 
-await sequelize.drop({force: true})
+// await sequelize.drop({force: true})
 await sequelize.sync()
 
 insercao()

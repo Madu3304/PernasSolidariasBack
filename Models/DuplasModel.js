@@ -1,8 +1,8 @@
 import { Sequelize, DataTypes } from "sequelize";
 import { sequelize } from "../Config/banco.js";
 
-const Relatorio = sequelize.define("Relatorio", {
-  id_Relatorio: {
+const Duplas = sequelize.define("Duplas", {
+  id_Duplas: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
     primaryKey: true
@@ -28,9 +28,9 @@ const Relatorio = sequelize.define("Relatorio", {
   timestamps: false
 },
 
-// Relatorio.belongsTo(Cadeirante, { foreignKey: 'id_cadeirante', as: 'cadeirante' }),
-// Relatorio.belongsTo(Corredor, { foreignKey: 'id_corredor', as: 'corredor' })
+// Duplas.belongsTo(Cadeirante, { foreignKey: 'id_cadeirante', as: 'cadeirante' }),
+// Duplas.belongsTo(Corredor, { foreignKey: 'id_corredor', as: 'corredor' })
 
 );
 
-export { Relatorio };
+export { Duplas };

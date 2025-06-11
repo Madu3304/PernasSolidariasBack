@@ -20,7 +20,7 @@ function validarInscricao(dados) {
     }
   
     return { valido: true };
-  }
+}
 
 //GET
 corredor.getCorredor = async(req, res) => {
