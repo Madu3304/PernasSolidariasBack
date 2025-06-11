@@ -17,7 +17,7 @@ const app = express()
 // const PORT = process.env.PORT || 8080
 const port = 3000
 
-const insersao = async () => {
+const insercao = async () => {
     await Cadeirante.bulkCreate([
         {nm_cadeirante: 'Luiz Cadeirante', cpf_cadeirante: '084', tamanho_blusa: 'gg', s_n_cadeira: 'Sim'},
         {nm_cadeirante: 'Maria Cadeirante', cpf_cadeirante: '085', tamanho_blusa: 'm', s_n_cadeira: 'Não' },
@@ -40,6 +40,33 @@ const insersao = async () => {
     ])
 }
 
+const insercaoExtra = async () => {
+    await Cadeirante.bulkCreate([
+        {nm_cadeirante: 'João Cadeirante', cpf_cadeirante: '086', tamanho_blusa: 'g', s_n_cadeira: 'Sim'},
+        {nm_cadeirante: 'Ana Cadeirante', cpf_cadeirante: '087', tamanho_blusa: 'p', s_n_cadeira: 'Sim'},
+        {nm_cadeirante: 'Carlos Cadeirante', cpf_cadeirante: '088', tamanho_blusa: 'm', s_n_cadeira: 'Não'},
+    ]);
+
+    await Corredor.bulkCreate([
+        {nm_corredor: 'Pedro Corredor', cpf_corredor: '091', tamanho_blusa: 'P'},
+        {nm_corredor: 'Juliana Corredora', cpf_corredor: '092', tamanho_blusa: 'M'},
+        {nm_corredor: 'Fernanda Corredora', cpf_corredor: '093', tamanho_blusa: 'G'},
+    ]);
+
+    await Evento.bulkCreate([
+        {nm_evento: 'Corrida C', distancia: 5, dt_corrida: '2025-06-10', local_corrida: 'Florianópolis'},
+        {nm_evento: 'Corrida D', distancia: 15, dt_corrida: '2025-06-20', local_corrida: 'Blumenau'},
+        {nm_evento: 'Corrida E', distancia: 8, dt_corrida: '2025-07-01', local_corrida: 'Curitiba'},
+    ]);
+
+    await Relatorio.bulkCreate([
+        {id_cadeirante: 3, id_corredor: 3, id_evento: 3},
+        {id_cadeirante: 4, id_corredor: 4, id_evento: 4},
+        {id_cadeirante: 5, id_corredor: 5, id_evento: 5},
+        {id_cadeirante: 3, id_corredor: 5, id_evento: 4},
+    ]);
+}
+
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -53,7 +80,8 @@ app.use("/Grafico", GraficoRouter)
 await sequelize.drop({force: true})
 await sequelize.sync()
 
-insersao()
+insercao()
+insercaoExtra()
 
 
 app.listen(port, () => console.log("Servidor funcionando, Gloria!!"))
