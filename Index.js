@@ -6,6 +6,7 @@ import { Corredor } from "./Models/CorredorModel.js"
 import { Evento } from "./Models/EventosModel.js"
 import { Relatorio } from "./Models/RelatoriosModel.js"
 import { Duplas } from "./Models/DuplasModel.js"
+import { Usuario } from "./Models/UsuarioModel.js"
  
 
 import { router as CadeiranteRouter } from "./Routes/CadeiranteRoutes.js"
@@ -14,12 +15,15 @@ import { router as EventoRouter} from "./Routes/EventoRoutes.js"
 import { router as GraficoRouter } from "./Routes/GraficoRoutes.js"
 import { router as DuplasRouter } from "./Routes/DuplasRoutes.js"
 import { router as RelatorioRoutes } from "./Routes/RelatoriosRoutes.js"
+import { router as AuthRouter } from "./Routes/AuthRoutes.js";
 
 const app = express()
 // const PORT = process.env.PORT || 8080
 const port = 3000
 
 const insercao = async () => {
+    
+
     await Cadeirante.bulkCreate([
         {nm_cadeirante: 'Luiz Cadeirante', cpf_cadeirante: '084', tamanho_blusa: 'gg', s_n_cadeira: 'Sim'},
         {nm_cadeirante: 'Maria Cadeirante', cpf_cadeirante: '085', tamanho_blusa: 'm', s_n_cadeira: 'Não' },
@@ -40,13 +44,15 @@ const insercao = async () => {
         {id_cadeirante: 2, id_corredor: 2, id_evento: 2},
         {id_cadeirante: 1, id_corredor: 2, id_evento: 2},
     ])
-    await Relatorio.drop();     
-    await Evento.drop()
 
     await Duplas.bulkCreate([
         {id_cadeirante: 1, id_corredor: 1, id_evento: 1},
         {id_cadeirante: 2, id_corredor: 2, id_evento: 2},
         {id_cadeirante: 1, id_corredor: 2, id_evento: 2},
+    ])
+
+    await Usuario.bulkCreate([
+        {email:"admin@exemplo.com", senha:"123456"}
     ])
 
 }
@@ -88,8 +94,9 @@ app.use("/evento", EventoRouter)
 app.use("/Relatorio", RelatorioRoutes)
 app.use("/Grafico", GraficoRouter)
 app.use("/Duplas", DuplasRouter)
+app.use("/auth", AuthRouter);
 
-// await sequelize.drop({force: true})
+await sequelize.drop({force: true})
 await sequelize.sync()
 
 insercao()
