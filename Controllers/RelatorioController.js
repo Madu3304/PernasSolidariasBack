@@ -25,6 +25,40 @@ listarRelatorios.getGraficoCadeirante = async(req, res)=>{
   }
 }
 
+listarRelatorios.getGraficoCorredor = async(req, res)=>{
+  try {
+    const resultados = await sequelize.query(`
+        select c.nm_corredor as nome, count(*) as qtd 
+        from relatorio r 
+        inner join corredor c ON c.id_corredor = r.id_corredor 
+        group by c.nm_corredor 
+        order by qtd desc;
+      `, {type: sequelize.QueryTypes.SELECT})
+
+      res.json(resultados)
+  } catch (error) {
+    console.error('Erro ao tentar buscar dados do gráfico de corredor:', error)
+    res.status(500).send("Erro ao buscar dados do gráfico")
+  }
+}
+
+listarRelatorios.getGraficoEvento = async(req, res)=>{
+  try {
+    const resultados = await sequelize.query(`
+        select e.nm_evento as nome, count(*) as qtd
+        from relatorio r 
+        inner join evento e on e.id_evento = r.id_evento 
+        group by e.nm_evento 
+        order by qtd desc;
+      `, {type: sequelize.QueryTypes.SELECT})
+
+      res.json(resultados)
+  } catch (error) {
+    console.error('Erro ao tentar buscar dados do gráfico de evento:', error)
+    res.status(500).send("Erro ao buscar dados do gráfico")
+  }
+}
+
 
 listarRelatorios.getlistarRelatorios= async (req, res) => {
     try {

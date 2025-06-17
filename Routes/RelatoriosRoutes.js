@@ -15,6 +15,12 @@ const router = express.Router();
 // Rota para obter o gráfico de cadeirantes
 router.get("/grafico-cadeirantes", listarRelatorios.getGraficoCadeirante);
 
+// Rota para obter o gráfico de cadeirantes
+router.get("/grafico-corredores", listarRelatorios.getGraficoCorredor);
+
+// Rota para obter o gráfico de cadeirantes
+router.get("/grafico-eventos", listarRelatorios.getGraficoEvento);
+
 // Rota para listar os relatórios
 router.get("/listar", listarRelatorios.getlistarRelatorios);
 
