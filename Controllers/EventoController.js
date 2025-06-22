@@ -39,6 +39,15 @@ evento.getEvento = async(req, res) => {
 evento.createEvento = async (req, res) => {
     try {
             const { nm_evento,  distancia, dt_corrida, local_corrida} = req.body
+            
+            const dataEvento = new Date(dt_corrida);
+            const hoje = new Date();
+            hoje.setHours(0, 0, 0, 0);
+
+            if (dataEvento < hoje) {
+                return res.status(400).json({ mensagem: "A data do evento não pode ser anterior à data atual." });
+            }
+
             const novoEvento = await Evento.create({
                 nm_evento: nm_evento,  
                 distancia: distancia, 
@@ -49,6 +58,7 @@ evento.createEvento = async (req, res) => {
             res.send(novoEvento)
     } catch (error) {
         console.log(error)
+        res.status(500).send({ mensagem: "Erro ao criar evento." });
     }
 }
 
