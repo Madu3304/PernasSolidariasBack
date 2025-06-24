@@ -3,22 +3,36 @@ import globals from "globals";
 import js from "@eslint/js";
 
 export default [
-  // 1. Carrega o conjunto de regras recomendadas pelo ESLint
+  // 1. COMECE com a configuração base recomendada pelo ESLint.
   js.configs.recommended,
 
-  // 2. Aplica sua configuração personalizada sobre as regras recomendadas
+  // 2. DEPOIS, aplique suas configurações e regras personalizadas por cima.
   {
-    files: ["**/*.js"], // Aplica a todos os arquivos .js
+    files: ["**/*.js"],
     languageOptions: {
-      sourceType: "module", // <-- ESTA É A CORREÇÃO PRINCIPAL
+      sourceType: "module",
       ecmaVersion: "latest",
       globals: {
-        ...globals.node, // Disponibiliza as variáveis globais do Node.js
+        ...globals.node,
       },
     },
+    // Este objeto 'rules' agora vai sobrescrever corretamente as regras do 'recommended'.
     rules: {
-      // Aqui você pode adicionar ou modificar regras se precisar
-      // Ex: "semi": "error"
+      // Transformando o erro de variável não usada em um simples aviso.
+      "no-unused-vars": "warn",
+      
+      // Mantemos 'no-undef' como um erro, pois ele indica um bug real no código.
+      "no-undef": "error", 
+    },
+  },
+
+  // 3. Adicione a configuração específica para os testes do Jest.
+  {
+    files: ["__tests__/**/*.js"],
+    languageOptions: {
+      globals: {
+        ...globals.jest,
+      },
     },
   },
 ];

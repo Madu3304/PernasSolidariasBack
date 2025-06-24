@@ -1,7 +1,10 @@
 import { Duplas, Cadeirante, Corredor } from "../Models/AssociacoesModel.js"
+import { Relatorio } from "../Models/RelatoriosModel.js"
+// import { Duplas } from "../Models/AssociacoesModel.js"
 import express from "express"
 import pkg from 'exceljs'
 import { sequelize } from "../Config/banco.js"
+import { Op } from "sequelize";
 const { ExcelJS } = pkg
 
 const app = express();

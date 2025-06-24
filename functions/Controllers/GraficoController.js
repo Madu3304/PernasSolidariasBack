@@ -3,6 +3,7 @@ import { Corredor } from "../Models/CorredorModel.js"
 import { Grafico } from "../Models/GraficoModel.js"
 import { Evento } from "../Models/EventosModel.js"
 import { sequelize } from "../Config/banco.js"
+import { Op } from "sequelize";
 
 const buscarDadosGrafico = {}
 

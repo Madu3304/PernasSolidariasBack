@@ -91,6 +91,7 @@
 import { Duplas, Cadeirante, Corredor } from "../Models/AssociacoesModel.js"
 import express from "express"
 import pkg from 'exceljs'
+import { Op } from "sequelize";
 import { sequelize } from "../Config/banco.js"
 const { ExcelJS } = pkg
 
