@@ -6,11 +6,11 @@ import cors from "cors";
 
 // --- INICIALIZAÇÃO DO FIREBASE ADMIN ---
 // Isso permite que seu código de back-end acesse os serviços do Firebase
-import serviceAccount from "./serviceAccountKey.json" assert { type: "json" };
+// import serviceAccount from "./serviceAccountKey.json" assert { type: "json" };
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
-});
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount)
+// });
 
 // Obtenha uma referência para o banco de dados Firestore
 const db = admin.firestore();
@@ -27,9 +27,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // --- IMPORTAÇÃO DAS ROTAS (ADAPTADAS PARA FIREBASE) ---
 // O ideal é que cada arquivo de rota agora importe o 'db' do index.js
-import { router as CadeiranteRouter } from "../Routes/CadeiranteRoutes.js";
-import { router as CorredorRouter } from "../Routes/CorredorRoutes.js";
-import { router as EventoRouter } from "../Routes/EventoRoutes.js";
+import { router as CadeiranteRouter } from "./Routes/CadeiranteRoutes.js";
+import { router as CorredorRouter } from "./Routes/CorredorRoutes.js";
+import { router as EventoRouter } from "./Routes/EventoRoutes.js";
 // ... importe as outras rotas da mesma forma
 
 // --- USO DAS ROTAS ---
